@@ -1,59 +1,51 @@
 package com.melody.Testbox;
-import java.awt.BorderLayout;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
-public class MyGui {
+
+public class MyGUI2 {
 	JFrame frame;
 	JLabel label;
-	void gui() {
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JButton colorbutton = new JButton("Kill me");
 
-		colorbutton.addActionListener(new ColorButtonListener());
-		frame.getContentPane().add(BorderLayout.SOUTH, colorbutton);
-		JButton labelbutton = new JButton("Save me");
-		labelbutton.addActionListener(new LabelButtonListener());
-
-		frame.getContentPane().add(BorderLayout.WEST, labelbutton);
+	void gui () {
+		frame = new JFrame();
+		JButton KillButton = new JButton("KILL ME");
+		frame.getContentPane().add(BorderLayout.WEST, KillButton);
+		JButton SaveButton = new JButton("SAVE ME");
+		frame.getContentPane().add(BorderLayout.EAST, SaveButton);
+		KillButton.addActionListener(new KillButtonListener());
+		SaveButton.addActionListener(new SaveButtonListener());
 		Drowwer dw = new Drowwer();
-		label = new JLabel("What do you want to choose");
-		frame.getContentPane().add(BorderLayout.CENTER,dw);
-		frame.getContentPane().add(BorderLayout.EAST, label);
+		frame.getContentPane().add(BorderLayout.CENTER, dw);
+		label = new JLabel("What do you want to choise?");
+		frame.getContentPane().add(BorderLayout.NORTH, label);
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(600,600);
+		frame.setTitle("MELOFY TRY!");;
 	}
-	class ColorButtonListener implements ActionListener{
-	
-	@Override
-	public void actionPerformed(ActionEvent event) {
-		// TODO Auto-generated method stub
-//		JButton melodybutton = new JButton("I die!");
-//		frame.add(BorderLayout.NORTH,melodybutton);
-//		melodybutton.addActionListener(new MelodyDielistener());
-		frame.repaint();
-	}	
-//	class MelodyDielistener implements ActionListener {
-//
-//		@Override
-//		public void actionPerformed(ActionEvent event) {
-//			// TODO Auto-generated method stub
-//			label.setText("Unbelivable!");
-//	
-//		}	
-//	}
-	}
+	class KillButtonListener implements ActionListener{
 
-	class LabelButtonListener implements ActionListener{
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		label.setText("thats good");
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			frame.repaint();
+			label.setText("I die!");
+		}
 
 	}
-	}	
+	class SaveButtonListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			frame.repaint();
+			label.setText("You have saved me!");
+		}
+
+	}
+
+
 }
-
-
